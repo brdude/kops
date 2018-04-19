@@ -55,7 +55,7 @@ var AllInstanceGroupRoles = []InstanceGroupRole{
 	InstanceGroupRoleBastion,
 }
 
-// InstanceGroupSpec is the specification for a instanceGroup
+// InstanceGroupSpec is the specification for an instanceGroup
 type InstanceGroupSpec struct {
 	// Type determines the role of instances in this group: masters or nodes
 	Role InstanceGroupRole `json:"role,omitempty"`
@@ -105,6 +105,8 @@ type InstanceGroupSpec struct {
 	AdditionalUserData []UserData `json:"additionalUserData,omitempty"`
 	// SuspendProcesses disables the listed Scaling Policies
 	SuspendProcesses []string `json:"suspendProcesses,omitempty"`
+	// ExternalLoadBalancers define loadbalancers that should be attached to the instancegroup
+	ExternalLoadBalancers []LoadBalancer `json:"externalLoadBalancers,omitempty"`
 	// DetailedInstanceMonitoring defines if detailed-monitoring is enabled (AWS only)
 	DetailedInstanceMonitoring *bool `json:"detailedInstanceMonitoring,omitempty"`
 }
@@ -117,4 +119,12 @@ type UserData struct {
 	Type string `json:"type,omitempty"`
 	// Content is the user-data content
 	Content string `json:"content,omitempty"`
+}
+
+// LoadBalancers defines a load balancer
+type LoadBalancer struct {
+	// LoadBalancerName to associate with this instance group (AWS ELB)
+	LoadBalancerName *string `json:"loadBalancerName,omitempty"`
+	// TargetGroupARN to associate with this instance group (AWS ALB/NLB)
+	TargetGroupARN *string `json:"targetGroupArn,omitempty"`
 }
