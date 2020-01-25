@@ -87,6 +87,7 @@ go_test(
         "docker_test.go",
         "kube_apiserver_test.go",
         "kube_proxy_test.go",
+        "kube_scheduler_test.go",
         "kubelet_test.go",
     ],
     data = glob(["tests/**"]),  #keep
