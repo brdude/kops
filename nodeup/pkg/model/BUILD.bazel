@@ -90,6 +90,7 @@ go_test(
         "docker_test.go",
         "kube_apiserver_test.go",
         "kube_proxy_test.go",
+        "kube_scheduler_test.go",
         "kubelet_test.go",
     ],
     data = glob(["tests/**"]),  #keep
@@ -97,6 +98,8 @@ go_test(
     deps = [
         "//nodeup/pkg/distros:go_default_library",
         "//pkg/apis/kops:go_default_library",
+        "//pkg/apis/nodeup:go_default_library",
+        "//pkg/configbuilder:go_default_library",
         "//pkg/flagbuilder:go_default_library",
         "//pkg/testutils:go_default_library",
         "//upup/pkg/fi:go_default_library",

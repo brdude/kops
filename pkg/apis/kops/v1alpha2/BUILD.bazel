@@ -6,6 +6,8 @@ go_library(
         "bastion.go",
         "cluster.go",
         "componentconfig.go",
+        "containerdconfig.go",
+        "conversion.go",
         "defaults.go",
         "doc.go",
         "dockerconfig.go",
