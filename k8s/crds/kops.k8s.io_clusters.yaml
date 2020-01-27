@@ -1532,9 +1532,6 @@ spec:
                 image:
                   description: Image is the docker image to use
                   type: string
-                kubeConfig:
-                  description: KubeConfig overrides the default kubeconfig path.
-                  type: string
                 leaderElection:
                   description: LeaderElection defines the configuration of leader
                     election client.

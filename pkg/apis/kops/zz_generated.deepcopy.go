@@ -2618,15 +2618,15 @@ func (in *KubeSchedulerConfig) DeepCopyInto(out *KubeSchedulerConfig) {
 		*out = new(int32)
 		**out = **in
 	}
-	if in.EnableProfiling != nil {
-		in, out := &in.EnableProfiling, &out.EnableProfiling
-		*out = new(bool)
-		**out = **in
-	}
 	if in.Qps != nil {
 		in, out := &in.Qps, &out.Qps
 		x := (*in).DeepCopy()
 		*out = &x
+	}
+	if in.EnableProfiling != nil {
+		in, out := &in.EnableProfiling, &out.EnableProfiling
+		*out = new(bool)
+		**out = **in
 	}
 	return
 }
