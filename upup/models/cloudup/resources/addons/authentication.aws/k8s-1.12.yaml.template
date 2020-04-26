@@ -120,7 +120,7 @@ spec:
       # - output (output kubeconfig to plug into your apiserver configuration, mounted from the host)
       containers:
       - name: aws-iam-authenticator
-        image: {{ or .Authentication.Aws.Image "602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-iam-authenticator:v0.5.0-scratch" }}
+        image: {{ or .Authentication.Aws.Image "602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-iam-authenticator:v0.5.1-scratch" }}
         args:
         - server
         - --config=/etc/aws-iam-authenticator/config.yaml
@@ -135,6 +135,13 @@ spec:
             memory: {{ or .Authentication.Aws.MemoryLimit "20Mi" }}
             cpu: {{ or .Authentication.Aws.CPULimit "100m" }}
 
+        livenessProbe:
+          httpGet:
+            host: 127.0.0.1
+            path: /healthz
+            port: 21362
+            scheme: HTTPS
+
         volumeMounts:
         - name: config
           mountPath: /etc/aws-iam-authenticator/
@@ -142,7 +149,6 @@ spec:
           mountPath: /var/aws-iam-authenticator/
         - name: output
           mountPath: /etc/kubernetes/aws-iam-authenticator/
-
       volumes:
       - name: config
         configMap:

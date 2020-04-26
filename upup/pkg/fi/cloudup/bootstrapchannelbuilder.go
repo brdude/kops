@@ -1248,7 +1248,7 @@ func (b *BootstrapChannelBuilder) buildAddons() *channelsapi.Addons {
 			key := "authentication.aws"
 			versions := map[string]string{
 				"k8s-1.10": "0.4.0-kops.2",
-				"k8s-1.12": "0.5.0-kops.1",
+				"k8s-1.12": "0.5.1-kops.1",
 			}
 			{
 				location := key + "/k8s-1.10.yaml"
